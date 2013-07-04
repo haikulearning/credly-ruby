@@ -11,7 +11,7 @@ desc "Build and publish the gem"
 task :publish => :build do
   tags = `git tag`
   system("git tag #{Credly::VERSION}") unless tags =~ /#{Credly::VERSION}/
-  system("gem push creedly-#{Credly::VERSION}.gem")
+  system("gem push credly-#{Credly::VERSION}.gem")
   system("git push --tags")
 end
 
