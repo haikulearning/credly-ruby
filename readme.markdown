@@ -72,3 +72,5 @@ In those cases, the `id` will be the first parameter on the method, as in:
 ```ruby
 client.api.members.badges.all(1, { other_parameter: 'whatever' })
 ```
+
+Check https://github.com/haikulearning/credly-ruby/blob/master/spec/unit/api_spec.rb for examples.
