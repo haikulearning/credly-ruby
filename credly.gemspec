@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'activesupport'
   gem.add_dependency 'multi_json'
 
-  gem.add_development_dependency 'thor'
+  gem.add_development_dependency 'rake'
   gem.add_development_dependency 'pry-debugger'
   gem.add_development_dependency 'json_spec'
   gem.add_development_dependency 'rspec'
