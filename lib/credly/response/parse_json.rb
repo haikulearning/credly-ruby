@@ -13,8 +13,6 @@ module Credly
           nil
         else
           response_hash = ::MultiJson.decode(body)
-
-          #raise LearnSprout::RequestException, response_hash["message"] if response_hash["message"]
         end
       end
     end
