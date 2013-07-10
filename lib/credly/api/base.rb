@@ -8,12 +8,12 @@ module Credly
 
       attr_accessor :response
 
-      def initialize(options = Hash.new)
+      def initialize(options = {})
         @client = options[:client]
       end
 
       def build_object
-        return OpenStruct.new(MultiJson.load(@response))
+        return MultiJson.load(@response)
       end
 
       def before_request(*args)

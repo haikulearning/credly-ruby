@@ -28,19 +28,19 @@ module Credly
       @connection ||= new_connection
     end
 
-    def get(path, params = Hash.new, headers = Hash.new)
+    def get(path, params = {}, headers = {})
       request(:get, path, params, headers)
     end
 
-    def post(path, params = Hash.new, headers = Hash.new)
+    def post(path, params = {}, headers = {})
       request(:post, path, params, headers)
     end
 
-    def put(path, params = Hash.new, headers = Hash.new)
+    def put(path, params = {}, headers = {})
       request(:put, path, params, headers)
     end
 
-    def delete(path, params = Hash.new, headers = Hash.new)
+    def delete(path, params = {}, headers = {})
       request(:delete, path, params, headers)
     end
 

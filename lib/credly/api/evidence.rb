@@ -3,7 +3,7 @@ module Credly
     class MemberBadges < Base
 
       class Evidence < Base
-        def all(member_badge, options = Hash.new)
+        def all(member_badge, options = {})
           get("member_badges/#{member_badge}/evidence", options)
         end
       end

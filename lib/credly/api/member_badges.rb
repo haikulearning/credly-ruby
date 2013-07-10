@@ -2,11 +2,11 @@ module Credly
   class Api
     class MemberBadges < Base
 
-      def create(options = Hash.new)
+      def create(options = {})
         post('member_badges', options)
       end
 
-      def find(id, options = Hash.new)
+      def find(id, options = {})
         get("member_badges/#{id}", options)
       end
 

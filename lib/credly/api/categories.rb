@@ -3,7 +3,7 @@ module Credly
     class Badges < Base
 
       class Categories < Base
-        def all(options = Hash.new)
+        def all(options = {})
           get("badges/categories", options)
         end
       end
