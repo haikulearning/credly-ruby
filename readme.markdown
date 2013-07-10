@@ -11,7 +11,7 @@ Credly.configuration do |config|
   # These are the default values
   config.base_endpoint = 'apistaging2.credly.com'
   config.version       = 'v0.2'
-  config.auth_token    = nil
+  config.access_token  = nil
 end
 ```
 
@@ -20,13 +20,13 @@ You can also:
 ```ruby
 Credly.configuration.base_endpoint = 'apistaging2.credly.com/v0.2/'
 Credly.configuration.version       = 'v0.2'
-Credly.configuration.auth_token    = nil
+Credly.configuration.access_token  = nil
 ```
 
 Those options will be the default ones for any `client.api` you create afterwards. Nonetheless, you can overwrite any of these options; just pass it as an argument when you instantiate the client:
 
 ```ruby
-client = client.api.new(auth_token: '26287568342')
+client = client.api.new(access_token: '26287568342')
 
 ```
 

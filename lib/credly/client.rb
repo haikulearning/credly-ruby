@@ -19,26 +19,26 @@ module Credly
       resp = connection.post(versioned_path('authenticate'))
       resp = MultiJson.load(resp.body)
       if resp['status_code'] == 200
-        options[:auth_token] = resp.data['token']
+        options[:access_token] = resp.data['token']
       else
         resp
       end
     end
 
     def get(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => options[:auth_token]}.merge(params), headers)
+      super(versioned_path(path), {:access_token => options[:access_token]}.merge(params), headers)
     end
 
     def post(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => options[:auth_token]}.merge(params), headers)
+      super(versioned_path(path), {:access_token => options[:access_token]}.merge(params), headers)
     end
 
     def put(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => options[:auth_token]}.merge(params), headers)
+      super(versioned_path(path), {:access_token => options[:access_token]}.merge(params), headers)
     end
 
     def delete(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => options[:auth_token]}.merge(params), headers)
+      super(versioned_path(path), {:access_token => options[:access_token]}.merge(params), headers)
     end
 
     def base_url

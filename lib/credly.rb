@@ -29,12 +29,12 @@ module Credly
     options[:user_agent]
   end
 
-  def self.auth_token=(auth_token)
-    options[:auth_token] = auth_token
+  def self.access_token=(access_token)
+    options[:access_token] = access_token
   end
 
-  def self.auth_token
-    options[:auth_token]
+  def self.access_token
+    options[:access_token]
   end
 
   def self.version=(version)
@@ -50,7 +50,7 @@ module Credly
       @@options
     else
       @@options = { :base_endpoint => 'https://apistaging2.credly.com',
-                    :auth_token    => nil,
+                    :access_token  => nil,
                     :version       => 'v0.2',
                     :debugging     => false,
                     :user_agent    => 'credly_ruby_client' }
