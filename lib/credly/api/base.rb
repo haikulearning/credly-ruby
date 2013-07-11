@@ -1,4 +1,3 @@
-require 'ostruct'
 
 module Credly
   class Api
