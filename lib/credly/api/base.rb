@@ -6,13 +6,19 @@ module Credly
       include Requierable
 
       attr_accessor :response
+      attr_accessor :id
 
       def initialize(options = {})
-        @client = options[:client]
+        @client = options.delete(:client)
+        options.each_pair do |key, value|
+          if self.respond_to?("#{key}=")
+            self.send("#{key}=", value)
+          end
+        end
       end
 
       def build_object
-        return MultiJson.load(@response)
+        MultiJson.load(@response)
       end
 
       def before_request(*args)

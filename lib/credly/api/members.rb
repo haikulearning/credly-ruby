@@ -3,12 +3,14 @@ module Credly
     class Members < Base
 
       class Badges < Base
-        def all(member_id, options = {})
-          get("members/#{member_id}/badges", options)
+        attr_accessor :member_id
+
+        def all(options = {})
+          get("members/#{self.member_id}/badges", options)
         end
 
-        def given(member_id, options = {})
-          get("members/#{member_id}/badges/given", options)
+        def given(options = {})
+          get("members/#{self.member_id}/badges/given", options)
         end
       end
 
@@ -21,7 +23,7 @@ module Credly
       end
 
       def badges
-        Badges.new(:client => @client)
+        Badges.new(:client => @client, :member_id => self.id)
       end
 
     end

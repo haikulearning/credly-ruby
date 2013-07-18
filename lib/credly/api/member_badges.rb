@@ -11,7 +11,7 @@ module Credly
       end
 
       def evidence
-        Evidence.new(:client => @client)
+        Evidence.new(:client => @client, :member_badge_id => self.id)
       end
 
     end

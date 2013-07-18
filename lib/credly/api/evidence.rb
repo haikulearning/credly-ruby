@@ -3,8 +3,10 @@ module Credly
     class MemberBadges < Base
 
       class Evidence < Base
-        def all(member_badge, options = {})
-          get("member_badges/#{member_badge}/evidence", options)
+        attr_accessor :member_badge_id
+
+        def all(options = {})
+          get("member_badges/#{self.member_badge_id}/evidence", options)
         end
       end
 

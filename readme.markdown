@@ -64,12 +64,7 @@ All API endpoints are accessible from the client instance. The endpoints methods
 Nested endpoints, like `/members/:id/badges` are also nested in the client
 
 ```ruby
-client.members.badges
-```
-
-In those cases, the `id` will be the first parameter on the method, as in:
-```ruby
-client.members.badges.all(1, { other_parameter: 'whatever' })
+client.members(id).badges.all(other_parameter: 'whatever')
 ```
 
 Check https://github.com/haikulearning/credly-ruby/blob/master/spec/unit/api_spec.rb for examples.

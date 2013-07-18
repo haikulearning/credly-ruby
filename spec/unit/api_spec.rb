@@ -46,7 +46,7 @@ describe 'API' do
     describe "Evidence" do
       it "list all evidence for a member_badge" do
         expect_api_call(:get, 'member_badges/1/evidence', {})
-        client.member_badges.evidence.all(1, {})
+        client.member_badges(1).evidence.all({})
       end
     end
   end
@@ -65,12 +65,12 @@ describe 'API' do
     describe "Badges" do
       it "list all badges of a member" do
         expect_api_call(:get, 'members/1/badges', {})
-        client.members.badges.all(1, {})
+        client.members(1).badges.all({})
       end
 
       it "list all badges a member has given" do
         expect_api_call(:get, 'members/1/badges/given', {})
-        client.members.badges.given(1, {})
+        client.members(1).badges.given({})
       end
     end
   end

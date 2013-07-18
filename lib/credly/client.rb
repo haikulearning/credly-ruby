@@ -48,9 +48,9 @@ module Credly
     end
 
     def self.endpoint(name)
-      define_method name do
+      define_method name do |id = nil|
         $endpoint_resource = name.to_s if ENV['testing']
-        Api::const_get(name.to_s.camelize).new(:client => self)
+        Api::const_get(name.to_s.camelize).new(:client => self, :id => id)
       end
     end
 

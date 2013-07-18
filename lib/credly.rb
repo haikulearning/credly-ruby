@@ -73,9 +73,8 @@ require 'credly/version'
 require 'credly/connection'
 require 'credly/response/follow_redirects'
 require 'credly/requierable'
-require 'credly/api'
 require 'credly/client'
 
 require 'credly/api/base'
 
-Dir[File.dirname(__FILE__) + "/credly/api/*"].each {|file| require file }
+Dir[File.dirname(__FILE__) + "/credly/api/*"].each {|file| require file unless file == 'base.rb' }
