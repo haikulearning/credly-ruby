@@ -1,3 +1,4 @@
 tmp/
 *.gem
 .idea
+Gemfile.lock
