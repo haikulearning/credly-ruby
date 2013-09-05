@@ -17,3 +17,7 @@ end
 
 task :release => :publish do
 end
+
+task :install_gems do
+  system("gem install faraday activesupport multi_json rake pry-debugger json_spec rspec guard-bundler guard-rspec rb-inotify rb-fsevent rb-fchange ruby_gntp faraday fabrication fuubar awesome_print")
+end

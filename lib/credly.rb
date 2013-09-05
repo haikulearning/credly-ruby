@@ -67,7 +67,15 @@ module Credly
 
 end
 
-require 'active_support/all'
+if defined? Rails
+  if Rails::VERSION::MAJOR > 2
+    require 'active_support/all'
+  else
+    require 'active_support'
+  end
+else
+  require 'active_support/all'
+end
 
 require 'credly/version'
 require 'credly/connection'
