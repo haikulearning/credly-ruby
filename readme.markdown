@@ -2,6 +2,12 @@
 
 Credly is an Badging service. This is the the API client for the ruby client. You can find Credly's API at https://apidocs2.credly.com/credly.
 
+## Install
+
+```
+gem 'credly'
+```
+
 ## Quick Start
 ```ruby
 client = Credly::Client.new(access_token: '26287568342')
