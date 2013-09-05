@@ -19,5 +19,6 @@ task :release => :publish do
 end
 
 task :install_gems do
+  # Used when testing in 1.8.6, where bundler is not available.
   system("gem install faraday activesupport multi_json rake pry-debugger json_spec rspec guard-bundler guard-rspec rb-inotify rb-fsevent rb-fchange ruby_gntp faraday fabrication fuubar awesome_print")
 end

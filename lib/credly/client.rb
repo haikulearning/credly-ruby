@@ -41,26 +41,23 @@ module Credly
       options[:base_endpoint]
     end
 
+    def badges(id = nil)
+      Api::Badges.new(:client => self, :id => id)
+    end
+
+    def member_badges(id = nil)
+      Api::MemberBadges.new(:client => self, :id => id)
+    end
+
+    def members(id = nil)
+      Api::Members.new(:client => self, :id => id)
+    end
+
     private
 
     def versioned_path(path)
       [options[:version], path].join('/')
     end
-
-    def self.endpoint(name)
-      define_method name do |id = nil|
-        $endpoint_resource = name.to_s if ENV['testing']
-        Api::const_get(name.to_s.camelize).new(:client => self, :id => id)
-      end
-    end
-
-    def self.endpoints(*names)
-      names.each { |name| endpoint(name) }
-    end
-
-    public
-
-    endpoints :badges, :member_badges, :members
 
   end
 end
