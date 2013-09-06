@@ -12,6 +12,7 @@ module Credly
           :user_agent   => Credly.user_agent,
         }
       }
+
       Faraday.new(self.base_url, default_options) do |builder|
         builder.use Credly::Response::FollowRedirects
         builder.request :multipart
@@ -19,7 +20,7 @@ module Credly
         # builder.use Faraday::Request::Multipart
         # builder.use Faraday::Request::UrlEncoded
 
-        builder.response :logger, ::Logger.new(STDOUT), :bodies => true if Credly.debugging?
+        builder.response :logger, ::Logger.new(STDOUT) if Credly.debugging?
         builder.adapter Faraday.default_adapter
       end
     end

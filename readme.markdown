@@ -11,6 +11,8 @@ gem 'credly'
 ## Quick Start
 ```ruby
 client = Credly::Client.new(access_token: '26287568342')
+# Or
+client = Credly::Client.new(username: 'whatever', password: 'mypass')
 
 client.badges.all
 client.badges.find(1)

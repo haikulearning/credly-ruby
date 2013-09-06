@@ -5,8 +5,15 @@ module Credly
 
     attr_accessor :options
 
-    def initialize(options = {})
-      @options = Credly.options.merge(options)
+    def initialize(args = {})
+      @options = Credly.options
+      if args[:username] && args[:password]
+        @options[:access_token] = authenticate(args[:username], args[:password])
+      elsif args[:access_token]
+        @options[:access_token] = args[:access_token]
+      else
+        raise ArgumentError.new("Need either an 'access_token' or 'username' and 'password' parameters")
+      end
     end
 
     def authenticate(username, password)
@@ -14,27 +21,31 @@ module Credly
       connection.basic_auth(username, password)
       resp = connection.post(versioned_path('authenticate'))
       resp = MultiJson.load(resp.body)
-      if resp['status_code'] == 200
-        options[:access_token] = resp.data['token']
+      if resp['meta']['status_code'] == 200
+        resp['data']['token']
       else
-        resp
+        raise "The username or password was invalid\n#{resp}"
       end
     end
 
+    def access_token
+      options[:access_token]
+    end
+
     def get(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => options[:access_token]}.merge(params), headers)
+      super(versioned_path(path), {:access_token => access_token}.merge(params), headers)
     end
 
     def post(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => options[:access_token]}.merge(params), headers)
+      super(versioned_path(path), {:access_token => access_token}.merge(params), headers)
     end
 
     def put(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => options[:access_token]}.merge(params), headers)
+      super(versioned_path(path), {:access_token => access_token}.merge(params), headers)
     end
 
     def delete(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => options[:access_token]}.merge(params), headers)
+      super(versioned_path(path), {:access_token => access_token}.merge(params), headers)
     end
 
     def base_url

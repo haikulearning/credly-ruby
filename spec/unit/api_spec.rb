@@ -3,6 +3,14 @@ require 'spec_helper'
 describe 'API' do
   include_context 'api'
 
+  describe "authentication" do
+    it "authenticates" do
+      pending
+      client = Credly::Client.new(:username => 'whatever', :password => 'password')
+      client.access_token.should_not be_nil
+    end
+  end
+
   describe 'Badges' do
     it 'list all badges' do
       expect_api_call(:get, 'badges', {})
