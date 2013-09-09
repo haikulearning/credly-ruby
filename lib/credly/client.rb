@@ -24,7 +24,7 @@ module Credly
       if resp['meta']['status_code'] == 200
         resp['data']['token']
       else
-        raise "The username or password was invalid\n#{resp}"
+        raise AuthFailed.new("The username or password was invalid\n#{resp}")
       end
     end
 
@@ -70,5 +70,8 @@ module Credly
       [options[:version], path].join('/')
     end
 
+  end
+
+  class AuthFailed < StandardError
   end
 end
