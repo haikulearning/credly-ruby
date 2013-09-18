@@ -83,4 +83,11 @@ describe 'API' do
     end
   end
 
+  describe 'Me' do
+    it "me" do
+      expect_api_call(:get, 'me', {})
+      client.me.profile()
+    end
+  end
+
 end

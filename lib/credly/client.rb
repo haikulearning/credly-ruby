@@ -62,6 +62,10 @@ module Credly
       Api::Members.new(:client => self, :id => id)
     end
 
+    def me(id = nil)
+      Api::Me.new(:client => self, :id => id)
+    end
+
     private
 
     def versioned_path(path)
