@@ -20,7 +20,7 @@ module Credly
         # builder.use Faraday::Request::Multipart
         # builder.use Faraday::Request::UrlEncoded
 
-        builder.response :logger, ::Logger.new(STDOUT) if Credly.debugging?
+        builder.response :logger, ::Logger.new(STDOUT) if self.options[:debugging]
         builder.adapter Faraday.default_adapter
       end
     end

@@ -1,4 +1,3 @@
-
 module Credly
   class Api
     class Base
@@ -17,41 +16,45 @@ module Credly
         end
       end
 
-      def build_object
-        MultiJson.load(@response)
+      def after_request(*args)
+        build_object
       end
 
       def before_request(*args)
       end
 
+      def build_object
+        MultiJson.load(@response)
+      end
+
       def get(*args)
         before_request(*args)
         @response = @client.get(*args)
-        build_object
+        after_request(*args)
       end
 
       def post(*args)
         before_request(*args)
         @response = @client.post(*args)
-        build_object
+        after_request(*args)
       end
 
       def put(*args)
         before_request(*args)
         @response = @client.put(*args)
-        build_object
+        after_request(*args)
       end
 
       def delete(*args)
         before_request(*args)
         @response = @client.delet(*args)
-        build_object
+        after_request(*args)
       end
 
       def patch(*args)
         before_request(*args)
         @response = @client.patch(*args)
-        build_object
+        after_request(*args)
       end
     end
   end

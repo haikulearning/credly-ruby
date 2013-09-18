@@ -6,12 +6,10 @@ module Credly
     attr_accessor :options
 
     def initialize(args = {})
-      @options = Credly.options
+      @options = Credly.options.merge(args.except(:username, :password))
       if args[:username] && args[:password]
         @options[:access_token] = authenticate(args[:username], args[:password])
-      elsif args[:access_token]
-        @options[:access_token] = args[:access_token]
-      else
+      elsif !args[:access_token]
         raise ArgumentError.new("Need either an 'access_token' or 'username' and 'password' parameters")
       end
     end
