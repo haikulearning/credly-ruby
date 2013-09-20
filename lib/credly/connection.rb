@@ -4,7 +4,7 @@ require 'multi_json'
 module Credly
   module Connection
 
-    def new_connection
+    def new_connection(options = {})
       default_options = {
         :headers => {
           :accept       => 'application/json',
@@ -13,20 +13,28 @@ module Credly
         }
       }
 
-      Faraday.new(self.base_url, default_options) do |builder|
+      Faraday.new(options[:base_url] || self.base_url, default_options) do |builder|
         builder.use Credly::Response::FollowRedirects
         builder.request :multipart
         builder.request :url_encoded
+
         # builder.use Faraday::Request::Multipart
         # builder.use Faraday::Request::UrlEncoded
 
         builder.response :logger, ::Logger.new(STDOUT) if self.options[:debugging]
+
+        # builder.response :logger, ::Logger.new(STDOUT), :bodies => { :request => true, :response => false }
+
         builder.adapter Faraday.default_adapter
       end
     end
 
     def connection
       @connection ||= new_connection
+    end
+
+    def connection=(con)
+      @connection = con
     end
 
     def get(path, params = {}, headers = {})

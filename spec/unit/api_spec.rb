@@ -90,4 +90,11 @@ describe 'API' do
     end
   end
 
+  describe "badge_builder" do
+    it "should description" do
+      pending
+      client.badge_builder.token
+    end
+  end
+
 end

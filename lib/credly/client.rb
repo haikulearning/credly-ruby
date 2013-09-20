@@ -31,19 +31,19 @@ module Credly
     end
 
     def get(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => access_token}.merge(params), headers)
+      super(path, {:access_token => access_token}.merge(params), headers)
     end
 
     def post(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => access_token}.merge(params), headers)
+      super(path, {:access_token => access_token}.merge(params), headers)
     end
 
     def put(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => access_token}.merge(params), headers)
+      super(path, {:access_token => access_token}.merge(params), headers)
     end
 
     def delete(path, params = {}, headers = {})
-      super(versioned_path(path), {:access_token => access_token}.merge(params), headers)
+      super(path, {:access_token => access_token}.merge(params), headers)
     end
 
     def base_url
@@ -66,7 +66,9 @@ module Credly
       Api::Me.new(:client => self, :id => id)
     end
 
-    private
+    def badge_builder(id = nil)
+      Api::BadgeBuilder.new(:client => self, :id => id)
+    end
 
     def versioned_path(path)
       [options[:version], path].join('/')

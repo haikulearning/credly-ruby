@@ -23,35 +23,44 @@ module Credly
       def before_request(*args)
       end
 
+      def versioned_path(path)
+        [@client.options[:version], path].join('/')
+      end
+
       def build_object
         MultiJson.load(@response)
       end
 
       def get(*args)
+        args[0] = versioned_path(args[0])
         before_request(*args)
         @response = @client.get(*args)
         after_request(*args)
       end
 
       def post(*args)
+        args[0] = versioned_path(args[0])
         before_request(*args)
         @response = @client.post(*args)
         after_request(*args)
       end
 
       def put(*args)
+        args[0] = versioned_path(args[0])
         before_request(*args)
         @response = @client.put(*args)
         after_request(*args)
       end
 
       def delete(*args)
+        args[0] = versioned_path(args[0])
         before_request(*args)
         @response = @client.delet(*args)
         after_request(*args)
       end
 
       def patch(*args)
+        args[0] = versioned_path(args[0])
         before_request(*args)
         @response = @client.patch(*args)
         after_request(*args)
