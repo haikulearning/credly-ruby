@@ -11,6 +11,18 @@ describe 'API' do
     end
   end
 
+  describe "configuration" do
+    it "badge domain" do
+      Credly::Client.any_instance.should_receive(:authenticate)
+      expect(Credly::Client.new(:username => 'whatever', :password => 'password').options[:base_domain]).to eq('https://staging.credly.com')
+    end
+
+    it "badge domain can be defined" do
+      Credly::Client.any_instance.should_receive(:authenticate)
+      expect(Credly::Client.new(:username => 'whatever', :password => 'password', :base_domain => 'mymy').options[:base_domain]).to eq('mymy')
+    end
+  end
+
   describe 'Badges' do
     it 'list all badges' do
       expect_api_call(:get, 'badges', {})

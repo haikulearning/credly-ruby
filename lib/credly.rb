@@ -45,11 +45,20 @@ module Credly
     options[:version]
   end
 
+  def self.base_domain
+    options[:base_domain]
+  end
+
+  def self.base_domain=(domain)
+    options[:domain] = domain
+  end
+
   def self.options
     if defined? @@options
       @@options
     else
       @@options = { :base_endpoint => 'https://apistaging2.credly.com',
+                    :base_domain   => 'https://staging.credly.com',
                     :access_token  => nil,
                     :version       => 'v0.2',
                     :debugging     => false,

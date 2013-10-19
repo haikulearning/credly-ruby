@@ -4,7 +4,7 @@ module Credly
       def initialize(options = {})
         super
         @client = @client.dup
-        @client.connection = @client.new_connection(:base_url => 'https://staging.credly.com')
+        @client.connection = @client.new_connection(:base_url => @client.options[:base_domain])
       end
 
       def token
