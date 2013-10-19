@@ -50,7 +50,7 @@ module Credly
   end
 
   def self.base_domain=(domain)
-    options[:domain] = domain
+    options[:base_domain] = domain
   end
 
   def self.options
