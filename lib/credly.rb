@@ -57,7 +57,7 @@ module Credly
     if defined? @@options
       @@options
     else
-      @@options = { :base_endpoint => 'https://apistaging2.credly.com',
+      @@options = { :base_endpoint => 'https://apistaging.credly.com',
                     :base_domain   => 'https://staging.credly.com',
                     :access_token  => nil,
                     :version       => 'v0.2',
