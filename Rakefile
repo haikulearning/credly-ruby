@@ -13,7 +13,7 @@ task :publish => :build do
   system("git tag #{Credly::VERSION}") unless tags =~ /#{Credly::VERSION}/
   system("gem push credly-#{Credly::VERSION}.gem")
   system("git push --tags")
-  system("gem push")
+  system("git push")
 end
 
 task :release => :publish do
