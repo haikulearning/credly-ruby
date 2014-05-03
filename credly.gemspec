@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Gonzalo Rodríguez-Baltanás Díaz"]
   gem.email         = ["gonzalor@haikuls.com"]
   gem.description   = %q{ruby client for the Credly API}
-  gem.homepage      = "https://github.com/haikulearning/credly"
+  gem.homepage      = "https://github.com/haikulearning/credly-ruby"
   gem.summary       = gem.description
 
   gem.name          = "credly"
